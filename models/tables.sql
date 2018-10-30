@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS public."USERS"
+(
+  "USER_ID" serial NOT NULL UNIQUE,
+  "USERNAME" character varying(50) NOT NULL,
+  "PASSWORD" character varying(100) NOT NULL,
+  CONSTRAINT "USERS_pkey" PRIMARY KEY ("USER_ID")
+);
