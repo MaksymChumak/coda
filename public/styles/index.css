@@ -69,6 +69,13 @@ h1 {
   font-size:1em;
 }
 
+#showpassword {
+  width: 400px;
+  text-align: left;
+  padding:5px 5px 5px 20px;
+  
+}
+
 .log-in {
   background:#3498db;
   width:200px;
