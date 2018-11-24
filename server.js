@@ -1,33 +1,23 @@
 const express = require('express');
-const _ = require('lodash');
-const hbs = require("hbs");
-const port = process.env.PORT || 8080;
+const bodyParser = require('body-parser');
+const path = require('path');
+const app = express();
+const port = process.env.PORT || 5000;
 
-let app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.set('views', `${__dirname}/views`);
-hbs.registerPartials(__dirname + "/views/partials");
-
-app.set('view engine', 'hbs');
-app.use(express.static(__dirname + "/public"));
-
-app.get('/', (request, response) => {
-  response.render('index.hbs');
+app.get('/', (req, res) => {
+  res.send({ express: 'Hello From Express' });
 });
 
-app.get('/game', (request, response) => {
-  response.render('game.hbs');
-});
+if (process.env.NODE_ENV === 'production') {
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, 'client/build')));
 
-app.get('/account', (request, response) => {
-  response.render('account.hbs');
-});
-
-app.get('/leaderboard', (request, response) => {
-  response.render('leaderboard.hbs');
-});
-
-
-app.listen(port, () => {
-  console.log(`Server is up on port 8080`);
-});
+  // Handle React routing, return all requests to React app
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
+}
+app.listen(port, () => console.log(`Listening on port ${port}`));
