@@ -11,6 +11,27 @@ app.get('/', (req, res) => {
   res.send({ express: 'Hello From Express' });
 });
 
+
+app.post('/login', (request, response) => {
+  let username = request.body.username
+  let password = request.body.password
+  let user = new user.User()
+  user.login(username, password).then((result) => {
+    if (result) {
+      response.sendStatus(200)
+    } else {
+      response.sendStatus(406)
+    }
+  })
+})
+
+app.get('/game', (res, req) => {
+ // gets userdata and game_data from database
+})
+
+app.get('/leaderboard', (res, req) => {
+  // gets scores from database
+})
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
   app.use(express.static(path.join(__dirname, 'client/build')));
