@@ -8,6 +8,7 @@ class NavBar extends React.Component {
       <div>
         <header class="header-fixed">
           <div class="header-limiter">
+            <div className = "logo">CODA</div>
             <nav>
               <Link to="/leaderboard">Leaderboard </Link>
               <Link to="/game">Game</Link>

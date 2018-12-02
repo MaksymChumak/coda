@@ -4,7 +4,7 @@
 
 .App {
   background: url('./matrix.png') no-repeat fixed center; 
-
+  position: fixed;
   background-size: cover;
   width: 100vw;
   height: 100vh;
@@ -660,13 +660,6 @@
 }
 
 
-
-.logo {
+.manualbody {
   text-align: center;
-  background-image: url(./LOGO.png);
-  background-size: 60% 80%;
-  background-repeat: no-repeat;
-  background-position: center center;
-  color: black
 }
-
