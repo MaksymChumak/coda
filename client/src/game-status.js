@@ -1,7 +1,7 @@
 // react component card
 
 import React, { Component } from "react";
-import "./App.css";
+import "./Game.css";
 import Card from "./card";
 import swal from "sweetalert";
 //TODO: DropDown component for selecting number to guess
@@ -38,7 +38,7 @@ class GameStatus extends Component {
   };
 
   renderSetup = () => {
-    /* render Setup 
+    /* render Setup
       deal 3 cards to player and computer
       onClick = computerTurn()
     */
@@ -114,7 +114,7 @@ class GameStatus extends Component {
     cardComputerDrawn = new Card(cardComputerDrawn)
 
     return (
-      
+
       <div className="gameStatusComputerTurn">
         <div className="msg1">
           {this.props.states.wasComputerCorrect
@@ -144,7 +144,7 @@ class GameStatus extends Component {
             ).length
           }
         </div>
-        
+
         <button
           onClick={() => this.props.playerTurn()}
           className="continue-btn"
@@ -166,7 +166,7 @@ class GameStatus extends Component {
           onClick={
             this.props.states.pool.filter(
               cardName => cardName.slice(0, 1) === "B").length?
-              !this.props.states.didPlayerDraw 
+              !this.props.states.didPlayerDraw
                 ? () => this.props.dealBlack()
                 : () => swal("you already drew a card", guess_instruction)
             :()=>{console.log('empty b pool')}
@@ -200,7 +200,7 @@ class GameStatus extends Component {
             ).length
           }
         </div>
-        <select 
+        <select
           className = "custom-select"
           onChange={this.props.guessNum}
         >
@@ -246,7 +246,7 @@ class GameStatus extends Component {
               .length
           }
         </div>
-        
+
         <button onClick={() => this.props.reGuess()} className="guess-btn">
           Guess Again!
         </button>
@@ -286,7 +286,7 @@ class GameStatus extends Component {
               .length
           }
         </div>
-        
+
         <button onClick={() => this.props.computerTurn()} className="next-btn">
           continue
         </button>
@@ -317,7 +317,7 @@ class GameStatus extends Component {
             ).length
           }
         </div>
-        <select 
+        <select
           className = "custom-select"
           onChange={this.props.guessNum}
         >

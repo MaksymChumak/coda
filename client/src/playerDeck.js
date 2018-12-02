@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
+import "./Game.css";
 import Card from "./card.js";
 import _ from "lodash";
 
@@ -9,7 +9,7 @@ class PlayerDeck extends Component {
 
     let cardClassName;
     if (card.getCardName()===this.props.lastDrawnCard){
-      // card is last drawn card 
+      // card is last drawn card
       if (card.getColor() === "B") {
         cardClassName = "drawnBlackPlayerCard";
       } else {
