@@ -39,3 +39,19 @@
   pointer-events: none;
   opacity: 1;
 }
+
+.logo {
+  position: absolute;
+  text-align: center;
+  background-image: url(./LOGO.png);
+  background-size: 100% 110%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  font:16px Arial, Helvetica, sans-serif;
+  line-height: 40px;
+  float: right;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: 800;
+}
