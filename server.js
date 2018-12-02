@@ -7,11 +7,6 @@ const port = process.env.PORT || 5000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-  res.send({ express: 'Hello From Express' });
-});
-
-
 app.post('/login', (request, response) => {
   let username = request.body.username
   let password = request.body.password
@@ -20,13 +15,9 @@ app.post('/login', (request, response) => {
     if (result) {
       response.sendStatus(200)
     } else {
-      response.sendStatus(406)
+      response.sendStatus(400)
     }
   })
-})
-
-app.get('/game', (res, req) => {
- // gets userdata and game_data from database
 })
 
 app.get('/leaderboard', (res, req) => {

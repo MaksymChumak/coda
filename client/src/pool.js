@@ -1,7 +1,7 @@
 // react component card
 
 import React, { Component } from "react";
-import "./styles/App.css";
+import "./App.css";
 import Card from "./card.js";
 // import _ from "lodash";
 

@@ -3,8 +3,9 @@ const {Client} = require('pg');
 
 let executeQuery = (query, values) => {
   let client = new Client({
-    connectionString: process.env.DATABASE_URL
+    connectionString: process.env.DATABASE_URL || 'postgres://postgres:letmein@localhost:5432/coda-local'
   });
+  console.log("Connected")
   return new Promise((resolve, reject) => {
     client.connect();
     client.query(query, values, (err, res) => {

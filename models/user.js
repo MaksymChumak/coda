@@ -1,5 +1,6 @@
 const db = require("../db/database");
 const bcrypt = require("bcryptjs");
+const crypto = require("crypto");
 
 class User {
   constructor(username=undefined, id=undefined) {
@@ -11,11 +12,17 @@ class User {
   }
 
   encryptPassword = (password) => {
+    return new Promise((resolve, reject) =>
+      bcrypt.hash(password, 10, (err, hash) => {
+        err ? reject(err) : resolve(hash)
+      })
+    )
+  }
+
+  createToken = () => {
     return new Promise((resolve, reject) => {
-      bcrypt.genSalt(10, (err, salt) => {
-        bcrypt.hash(password, salt).then((err, hash) => {
-          resolve(hash)
-        })
+      crypto.randomBytes(16, (err, data) => {
+        err ? reject(err) : resolve(data.toString('base64'))
       })
     })
   }
@@ -35,9 +42,9 @@ class User {
     return new Promise((resolve, reject) => {
       db.executeQuery(`SELECT * FROM public."USERS" WHERE "USERNAME" = '${username}';`).then((queryResult) => {
         let result = JSON.parse(queryResult)
-        if (result.length > 0 && bcrypt.compareSync(password, result[0].PASSWORD)) {
-          this.username = result[0].USERNAME
-          this.id = result[0]['USER_ID']
+        if (result.length > 0 && bcrypt.compareSync(password, result[0]['PASSWORD'])) {
+          this.username = result[0]['USERNAME']
+          this.id = result[0]['ID']
           resolve(true)
         } else {
           resolve(false)

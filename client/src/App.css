@@ -3,7 +3,8 @@
 /* main */
 
 .App {
-  background: url('../assets/images/bg.jpg') no-repeat fixed center; 
+  background: url('./matrix.png') no-repeat fixed center; 
+
   background-size: cover;
   width: 100vw;
   height: 100vh;
@@ -20,11 +21,15 @@
   grid-template-columns: repeat(7, 1fr);
   color: #ABCDAB;
   text-align: center;
+  padding-top: 10px;
+  font-size: 1.3rem;
 }
 
 /* Manual */
 .manualContainer:hover {
   background-color: deeppink;
+  color:white;
+  
 }
 
 .stress {
@@ -69,6 +74,7 @@
   flex-direction: row;
   align-items: center;
 }
+
 .selectedWhiteComputerCard {
   height:66%;
   width:7%;
@@ -79,6 +85,21 @@
   font-size: 3.5rem;;
   text-align:center;
   border: 8px dotted red;
+  margin:5px;  
+  vertical-align: middle;
+
+}
+
+.visibleWhiteComputerCard {
+  height:66%;
+  width:7%;
+  background:#FFF;
+  opacity: 1;
+  display: inline-block;
+  text-align: center;
+  font-size: 3.5rem;;
+  text-align:center;
+  border: 5px dashed #20c2ff;
   margin:5px;  
   vertical-align: middle;
 
@@ -96,6 +117,22 @@
   text-align:center;
   vertical-align: middle; 
   border: 8px  dotted red;
+  margin:5px;
+  
+}
+
+.visibleBlackComputerCard {
+  height:66%;
+  width:7%;
+  background:#000;
+  opacity: 1;
+  display: inline-block;
+  text-align: center;
+  font-size: 3.5rem;
+  color: white;
+  text-align:center;
+  vertical-align: middle; 
+  border: 5px dashed #20c2ff;
   margin:5px;
   
 }
@@ -172,13 +209,13 @@
 }
 .msg1 {
   grid-area: msg1;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   text-align: center;
   color: #ABCDAB;
 }
 .msg2 {
   grid-area: msg2;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   text-align: center;
   color: #ABCDAB;
 }
@@ -243,7 +280,16 @@
   box-shadow: 0 4px 8px 0 #ABCDAB, 0 6px 20px 0 #ABCDAB;
 }
 
-.white:hover {
+.white1 {
+  background:#FFF;
+  text-align: center;
+  font-size: 2.2rem;
+  border: 2px solid #ABCDAB;
+  grid-area: w;
+  box-shadow: 0 4px 8px 0 #ABCDAB, 0 6px 20px 0 #ABCDAB;
+}
+
+.white1:hover {
   background:#FFF;
   text-align: center;
   font-size: 2.2rem;
@@ -261,8 +307,16 @@
   color:#FFF;
   box-shadow: 0 4px 8px 0 #ABCDAB, 0 6px 20px 0 #ABCDAB;
 }
-
-.black:hover {
+.black1 {
+  background:#222;
+  text-align: center;
+  font-size: 2.2rem;
+  border: 2px solid #ABCDAB;
+  grid-area: b;
+  color:#FFF;
+  box-shadow: 0 4px 8px 0 #ABCDAB, 0 6px 20px 0 #ABCDAB;
+}
+.black1:hover {
   background:#222;
   text-align: center;
   font-size: 2.2rem;
@@ -286,6 +340,7 @@
   text-align: center;
   color: #ABCDAB;
 }
+
 
 .textInput {
   grid-area: inp;
@@ -451,9 +506,22 @@
   box-shadow: 0 4px 8px 0 #ABCDAB, 0 6px 20px 0 #ABCDAB;
 }
 
-.textInput {
+.custom-select {
   grid-area: inp;
+  position: relative;
+  font-family: Arial;
+  background-color: #222;
+  border:2px solid #222; 
+  color:#ABCDAB;
+  font-size: 0.9rem;
+  text-align-last:center;
+  box-shadow: 0 4px 8px 0 #ABCDAB, 0 6px 20px 0 #ABCDAB;
+  cursor: pointer;
 
+}
+
+.option {
+  text-align: center;
 }
 
 .guess-btn {
@@ -461,6 +529,7 @@
   background-color: #222;
   border:2px solid #222; 
   color:#ABCDAB;
+  margin-top: 5%;
   font-size: 1.4rem;
   text-align: center;
   box-shadow: 0 4px 8px 0 #ABCDAB, 0 6px 20px 0 #ABCDAB;
@@ -542,6 +611,30 @@
   border: 5px  dashed #20c2ff;
   margin:5px;
 }
+
+.drawnWhitePlayerCard {
+  height:66%;
+  width:7%;
+  background:#FFF;
+  text-align: center;
+  font-size: 3.5rem;;
+  text-align:center;
+  border: 8px  dotted deeppink;
+}
+
+.drawnBlackPlayerCard {
+  height:66%;
+  width:7%;
+  background:#000;
+  opacity: 1;
+  text-align: center;
+  font-size: 3.5rem;
+  color: white;
+  text-align:center;
+  border: 8px  dotted deeppink;
+  /* box-shadow: 0 8px 20px 0 rgba(255, 255,255, 0.5), 0 6px 20px 0 rgba(255, 255, 255, 0.5); */
+}
+
 .whitePlayerCard {
   height:66%;
   width:7%;
@@ -568,8 +661,12 @@
 
 
 
-
-
-
-
+.logo {
+  text-align: center;
+  background-image: url(./LOGO.png);
+  background-size: 60% 80%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: black
+}
 
