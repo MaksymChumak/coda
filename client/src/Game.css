@@ -513,7 +513,7 @@
   background-color: #222;
   border:2px solid #222; 
   color:#ABCDAB;
-  font-size: 0.9rem;
+  font-size: 1rem;
   text-align-last:center;
   box-shadow: 0 4px 8px 0 #ABCDAB, 0 6px 20px 0 #ABCDAB;
   cursor: pointer;
@@ -550,6 +550,8 @@
   background-color: #222;
   border:2px solid #222; 
   color:#ABCDAB;
+  margin-top: 5%;
+  margin-left: 5%;
   font-size: 1.4rem;
   text-align: center;
   box-shadow: 0 4px 8px 0 #ABCDAB, 0 6px 20px 0 #ABCDAB;
