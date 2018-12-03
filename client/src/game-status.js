@@ -254,7 +254,7 @@ class GameStatus extends Component {
           onClick={() => this.props.computerTurn()}
           className="next-btn"
         >
-          To Computer's Turn
+          Skip Your Turn!
         </button>
       </div>
     );
