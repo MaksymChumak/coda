@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import "./leaderboard.css";
 
 export default class LeaderBoard extends Component {
 
@@ -16,13 +16,73 @@ export default class LeaderBoard extends Component {
     }
 
     render(){
-        let players = this.props.players
 
         return(
-            <div className="leaderboard">
-                LeaderBoard
-                {players.map(player=>this.renderPlayer(player))}
+            <header className = "leaderboard">
+            <div id="bg"></div>
+      <div className="leaderboard-container">
+        <div className="row-header">
+          <div class="row">
+            <div class="col">
+              <p>User Name</p>
             </div>
+            <div class="col">
+              <p>Winstreak</p>
+            </div>
+          </div>
+          
+        </div>
+        <div class="row">
+          <div class="col">
+            <p>Kahoot.json</p>
+          </div>
+          <div class="col">
+            <p>9999</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <p>HELLO</p>
+          </div>
+          <div class="col">
+            <p>HELLO</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <p>HELLO</p>
+          </div>
+          <div class="col">
+            <p>HELLO</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <p>HELLO</p>
+          </div>
+          <div class="col">
+            <p>HELLO</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <p>HELLO</p>
+          </div>
+          <div class="col">
+            <p>HELLO</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <p>HELLO</p>
+          </div>
+          <div class="col">
+            <p>HELLO</p>
+          </div>
+        </div>
+      </div>
+            </header>
+   
         )
     }
 }
