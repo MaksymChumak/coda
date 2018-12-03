@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Game.css";
+import "./stylesheets/Game.css";
 
 class Manual extends Component {
 

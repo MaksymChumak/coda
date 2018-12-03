@@ -1,8 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import "./header.css";
+import "./stylesheets/header.css";
 
 class NavBar extends React.Component {
+
+
   render() {
     return (
       <div>
@@ -10,9 +12,11 @@ class NavBar extends React.Component {
           <div class="header-limiter">
             <div className = "logo">CODA</div>
             <nav>
+              <Link to="/">Game</Link>
               <Link to="/leaderboard">Leaderboard </Link>
-              <Link to="/game">Game</Link>
               <Link to="/manual">Manual</Link>
+              <Link to="/login">Login</Link>
+              <Link to="/registration">Register</Link>
             </nav>
           </div>
         </header>
@@ -21,5 +25,7 @@ class NavBar extends React.Component {
     );
   }
 }
+
+
 
 export default NavBar;

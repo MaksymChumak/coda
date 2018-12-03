@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Game.css";
+import "./stylesheets/Game.css"
 import _ from "lodash";
 import GameStatus from "./game-status.js";
 import PlayerDeck from "./playerDeck.js";

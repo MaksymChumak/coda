@@ -1,20 +1,40 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { Router } from 'react-router-dom';
+import { history } from './store';
 import NavBar from './NavBar';
 import LeaderBoard from './leaderboard';
 import Game from './Game'
 import Manual from './manual';
+import LoginPage from './LoginPage';
+import RegisterPage from './RegisterPage';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    history.listen((location, action) => {
+      console.log(location)
+    });
+  }
+
   render() {
     return (
       <div>
-        <NavBar/>
-        <Switch>
-          <Route exact path="/" component={Game} />
-          <Route path="/manual" component={Manual} />
-          <Route path="/leaderboard" component={LeaderBoard} />
-        </Switch>
+
+        <Router history={history} >
+          <div>
+          <NavBar/>
+            <Switch>
+              <Route exact path="/" component={Game} />
+              <Route path="/manual" component={Manual} />
+              <Route path="/leaderboard" component={LeaderBoard} />
+              <Route path="/login" component={LoginPage} />
+              <Route path="/registration" component={RegisterPage} />
+            </Switch>
+          </div>
+        </Router>
+
       </div>
     );
   }

@@ -1,7 +1,7 @@
 // react component card
 
 import React, { Component } from "react";
-import "./Game.css";
+import "./stylesheets/Game.css"
 import Card from "./card";
 import swal from "sweetalert";
 //TODO: DropDown component for selecting number to guess
