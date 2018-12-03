@@ -9,9 +9,10 @@ class NavBar extends React.Component {
         <header class="header-fixed">
           <div class="header-limiter">
             <nav>
+              <Link to="/">Game</Link>
               <Link to="/leaderboard">Leaderboard </Link>
-              <Link to="/game">Game</Link>
               <Link to="/manual">Manual</Link>
+              <Link to="/auth">Register</Link>
             </nav>
           </div>
         </header>
