@@ -47,14 +47,14 @@ class RegisterPage extends React.Component {
         return (
           <div>
             <div id="bg"></div>
-            <div class="container">
-              <form class="login-form" onSubmit={this.handleSubmit}>
+            <div className="container">
+              <form className="login-form" onSubmit={this.handleSubmit}>
                 <h1>Register</h1>
-                <input placeholder="username" class="username" onChange={this.handleChange} />
+                <input placeholder="username" className="username" name="username" onChange={this.handleChange} />
                 {submitted && !user.username &&
                   <div className="help-block">Username is required</div>
                 }
-                <input placeholder="password" class="password" onChange={this.handleChange} />
+                <input placeholder="password" className="password" name="password" onChange={this.handleChange} />
                 {submitted && !user.password &&
                   <div className="help-block">Password is required</div>
                 }
@@ -66,8 +66,11 @@ class RegisterPage extends React.Component {
     }
 }
 
-const mapStateToProps = state => ({
-  user: state.user,
-});
+const mapStateToProps = (state) => {
+  const { registering } = state.registration;
+  return {
+      registering
+  };
+}
 
 export default connect(mapStateToProps)(RegisterPage);

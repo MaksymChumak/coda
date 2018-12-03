@@ -30,19 +30,19 @@ export const logout = () => {
 }
 
 export const register = (user) => {
-    return dispatch => {
-        dispatch(request(user));
+  return dispatch => {
+    dispatch(request(user));
 
-        userService.register(user)
-            .then(
-                user => {
-                    dispatch(success());
-                    history.push('/login');
-                },
-                error => {
-                    dispatch(failure(error.toString()));
-                }
-            );
+    userService.register(user)
+        .then(
+            user => {
+                dispatch(success());
+                history.push('/');
+            },
+            error => {
+                dispatch(failure(error.toString()));
+            }
+        );
     };
 
     function request(user) { return { type: types.REGISTER_REQUEST, user } }

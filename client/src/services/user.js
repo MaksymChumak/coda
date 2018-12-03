@@ -1,4 +1,4 @@
-import config from '../config';
+import apiUrl from '../config';
 
 export const userService = {
     login,
@@ -12,8 +12,8 @@ function login(username, password) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
     };
-
-    return fetch(`${config.apiUrl}/users/authenticate`, requestOptions)
+    console.log(apiUrl)
+    return fetch(`${apiUrl}/login`, requestOptions)
         .then(handleResponse)
         .then(user => {
             // login successful if there's a jwt token in the response
@@ -38,7 +38,7 @@ function register(user) {
         body: JSON.stringify(user)
     };
 
-    return fetch(`${config.apiUrl}/users/register`, requestOptions).then(handleResponse);
+    return fetch(`${apiUrl}/register`, requestOptions).then(handleResponse);
 }
 
 
