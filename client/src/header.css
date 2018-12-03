@@ -1,27 +1,26 @@
 .header-fixed {
   background-color:#292c2f;
   box-shadow:0 1px 1px #ccc;
-  padding: 20px 20px;
-  height: 80px;
+  padding: 0.5rem 0.5rem;
+  height: 3rem;
   color: #ffffff;
   box-sizing: border-box;
   text-align: center;
   margin: 0 auto;
 }
 .header-fixed-placeholder{
-  height: 80px;
+  height: 3rem;
   display: none;
 }
 /* The navigation links */
 .header-fixed a {
   color: #ffffff;
   text-decoration: none;
-  font-size: 1.2em;
+  font-size: 1.2rem;
   font-weight: 800;
 }
 .header-fixed nav {
   font:16px Arial, Helvetica, sans-serif;
-  line-height: 40px;
   float: right;
 }
 .header-fixed nav a{
@@ -41,17 +40,20 @@
 }
 
 .logo {
-  position: absolute;
+  position: relative;
   text-align: center;
   background-image: url(./LOGO.png);
-  background-size: 100% 110%;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center center;
   font:16px Arial, Helvetica, sans-serif;
-  line-height: 40px;
-  float: right;
+  float: left;
+  background-position-x: 10px;
+  background-position-y: 1px;
+  width: 8rem;
+  height: auto;
   color: #ffffff;
   text-decoration: none;
-  font-size: 1.2em;
+  font-size: 1.2rem;
   font-weight: 800;
 }
