@@ -1,33 +1,51 @@
-import { SubmissionError } from 'redux-form';
 import types from '../types/user';
-
-import api from '../utils/api';
 import { history } from '../store';
-
-export const login = (values, dispatch) => (
-  api.post('/auth', {
-    user: values,
-  })
-    .then((response) => {
-      localStorage.setItem('user', JSON.stringify(response.data));
-
-      return dispatch({type: types.LOGIN_SUCCESS, payload: response.data});
-    })
-    .catch((error) => {
-      dispatch({type: types.LOGIN_FAILURE});
-      throw new SubmissionError({
-        _error: error.response.data.error,
-      });
-    })
-);
+import { userService } from '../services/user';
 
 
-export const logout = () => dispatch => (
-  api.delete('/auth')
-    .then(() => {
-      localStorage.removeItem('user');
-      history.push('/');
-      return dispatch({type: types.LOGOUT_SUCCESS});
-    })
-    .catch(error => dispatch({type: types.LOGOUT_FAILURE, payload: error}))
-);
+export const login = (username, password) => {
+    return dispatch => {
+        dispatch(request({ username }));
+
+        userService.login(username, password)
+            .then(
+                user => {
+                    dispatch(success(user));
+                    history.push('/');
+                },
+                error => {
+                    dispatch(failure(error.toString()));
+                }
+            );
+    };
+
+    function request(user) { return { type: types.LOGIN_REQUEST, user } }
+    function success(user) { return { type: types.LOGIN_SUCCESS, user } }
+    function failure(error) { return { type: types.LOGIN_FAILURE, error } }
+}
+
+export const logout = () => {
+    userService.logout();
+    return { type: types.LOGOUT };
+}
+
+export const register = (user) => {
+    return dispatch => {
+        dispatch(request(user));
+
+        userService.register(user)
+            .then(
+                user => {
+                    dispatch(success());
+                    history.push('/login');
+                },
+                error => {
+                    dispatch(failure(error.toString()));
+                }
+            );
+    };
+
+    function request(user) { return { type: types.REGISTER_REQUEST, user } }
+    function success(user) { return { type: types.REGISTER_SUCCESS, user } }
+    function failure(error) { return { type: types.REGISTER_FAILURE, error } }
+}

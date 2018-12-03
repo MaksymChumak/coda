@@ -7,6 +7,7 @@ import LeaderBoard from './leaderboard';
 import Game from './Game'
 import Manual from './manual';
 import LoginPage from './LoginPage';
+import RegisterPage from './RegisterPage';
 
 class App extends Component {
   constructor(props) {
@@ -29,6 +30,7 @@ class App extends Component {
               <Route path="/manual" component={Manual} />
               <Route path="/leaderboard" component={LeaderBoard} />
               <Route path="/login" component={LoginPage} />
+              <Route path="/registration" component={RegisterPage} />
             </Switch>
           </div>
         </Router>
