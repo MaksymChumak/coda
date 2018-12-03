@@ -5,7 +5,7 @@ import api from '../utils/api';
 import { history } from '../store';
 
 export const login = (values, dispatch) => (
-  api.post('/auth/login', {
+  api.post('/auth', {
     user: values,
   })
     .then((response) => {
@@ -23,7 +23,7 @@ export const login = (values, dispatch) => (
 
 
 export const logout = () => dispatch => (
-  api.delete('/auth/logout')
+  api.delete('/auth')
     .then(() => {
       localStorage.removeItem('user');
       history.push('/');

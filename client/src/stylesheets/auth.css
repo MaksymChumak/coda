@@ -29,7 +29,7 @@
   margin: 0 auto 0 auto;
   padding:5px 25px 70px 25px;
 }
-.email {
+.username {
   background:#ecf0f1;
   border: #ccc 1px solid;
   border-bottom: #ccc 2px solid;
@@ -49,7 +49,7 @@
 }
 .log-in {
   background:#3498db;
-  width:200px;
+  width:420px;
   padding-top:5px;
   padding-bottom:5px;
   color:white;
