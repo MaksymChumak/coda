@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import { Router } from 'react-router-dom';
-import { history } from './store';
-
 import { Switch, Route } from 'react-router-dom';
 import NavBar from './NavBar';
 import LeaderBoard from './leaderboard';

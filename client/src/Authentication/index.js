@@ -1,6 +1,6 @@
 import React from 'react';
 import LoginForm from './LoginForm';
-import "../auth.css"
+import "../stylesheets/auth.css"
 class Authentication extends React.Component {
 
 

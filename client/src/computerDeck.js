@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Game.css";
+import "./stylesheets/Game.css"
 import Card from "./card.js";
 import _ from "lodash";
 
