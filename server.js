@@ -25,7 +25,6 @@ app.post('/login', cors(corsOptions), (request, response) => {
   let active_user = new user.User()
   active_user.login(username, password).then((result) => {
     if (result) {
-      console.log("SUCCESS")
       response.statusCode = 200
       return response.json({user: active_user})
     } else {
@@ -35,7 +34,6 @@ app.post('/login', cors(corsOptions), (request, response) => {
 })
 
 app.post('/register', cors(corsOptions), (request, response) => {
-  console.log(request.body)
   let username = request.body.username
   let password = request.body.password
   let new_user = new user.User()
@@ -45,7 +43,7 @@ app.post('/register', cors(corsOptions), (request, response) => {
       result &&
       new_user.regexPassword(password)
     ) {
-      console.log('validation passed')
+      // console.log('validation passed')
       new_user.register(username, password).then((finalResult) => {
         response.send(finalResult)
       })

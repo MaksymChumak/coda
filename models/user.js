@@ -22,7 +22,6 @@ class User {
   register(username, password) {
     return new Promise((resolve, reject) => {
       this.encryptPassword(password).then((result) => {
-        console.log("INSERT")
         db.executeQuery(
           `INSERT INTO public."USERS"("USERNAME", "PASSWORD")` +
            `VALUES ($1, $2);`,
