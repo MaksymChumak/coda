@@ -1,6 +1,7 @@
 import types from '../types/user';
 import { history } from '../store';
 import { userService } from '../services/user';
+import { alertActions } from './alerts';
 
 
 export const login = (username, password) => {
@@ -11,9 +12,10 @@ export const login = (username, password) => {
             .then(
                 user => {
                     dispatch(success(user));
-                    history.push('/');
+                    history.push('/manual');
                 },
                 error => {
+                    dispatch(alertActions.error(error.toString()));
                     dispatch(failure(error.toString()));
                 }
             );
@@ -38,6 +40,7 @@ export const register = (user) => {
             user => {
                 dispatch(success());
                 history.push('/');
+                dispatch(alertActions.success('Registration successful'));
             },
             error => {
                 dispatch(failure(error.toString()));

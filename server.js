@@ -4,7 +4,7 @@ const path = require('path');
 const cors = require('cors');
 const user = require('./models/user');
 const app = express();
-// Then use it before your routes are set up:
+
 app.use(cors());
 const port = process.env.PORT || 5000;
 
@@ -57,7 +57,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'client/build')));
 
   // Handle React routing, return all requests to React app
-  app.get('*', function(req, res) {
+  app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
   });
 }
