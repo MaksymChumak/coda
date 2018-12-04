@@ -11,11 +11,13 @@ const port = process.env.PORT || 5000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/',(req, res) => {
+const corsOptions = { origin: process.env.FRONTEND_URL, optionsSuccessStatus: 200 } || "http://localhost:3000"
+
+app.get('/', cors(corsOptions), (req, res) => {
   res.json('Hosted');
 });
 
-app.post('/login', (request, response) => {
+app.post('/login', cors(corsOptions), (request, response) => {
   let username = request.body.username
   let password = request.body.password
   let new_user = new user.User()
@@ -30,7 +32,7 @@ app.post('/login', (request, response) => {
 })
 
 
-app.post('/register', (request, response) => {
+app.post('/register', cors(corsOptions), (request, response) => {
   console.log(request.body)
   let username = request.body.username
   let password = request.body.password
