@@ -4,6 +4,8 @@ const path = require('path');
 const cors = require('cors');
 const user = require('./models/user');
 const app = express();
+const sessions = require("express-session");
+
 
 app.use(cors());
 const port = process.env.PORT || 5000;
@@ -14,23 +16,23 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const corsOptions = { origin: process.env.FRONTEND_URL, optionsSuccessStatus: 200 } || "http://localhost:3000"
 
 app.get('/', cors(corsOptions), (req, res) => {
-  res.json('Hosted');
+  res.json('hosted');
 });
 
 app.post('/login', cors(corsOptions), (request, response) => {
   let username = request.body.username
   let password = request.body.password
-  let new_user = new user.User()
-  new_user.login(username, password).then((result) => {
+  let active_user = new user.User()
+  active_user.login(username, password).then((result) => {
     if (result) {
       console.log("SUCCESS")
-      response.sendStatus(200)
+      response.statusCode = 200
+      return response.json({user: active_user})
     } else {
       response.sendStatus(400)
     }
   })
 })
-
 
 app.post('/register', cors(corsOptions), (request, response) => {
   console.log(request.body)

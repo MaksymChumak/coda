@@ -3,9 +3,9 @@ const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
 
 class User {
-  constructor(username=undefined, id=undefined) {
+  constructor(username=undefined, token=undefined) {
     this.username = username;
-    this.id = id;
+    this.token = token;
     this.wins = 0;
     this.loses = 0;
     this.winstreak = 0;
@@ -17,14 +17,6 @@ class User {
         err ? reject(err) : resolve(hash)
       })
     )
-  }
-
-  createToken() {
-    return new Promise((resolve, reject) => {
-      crypto.randomBytes(16, (err, data) => {
-        err ? reject(err) : resolve(data.toString('base64'))
-      })
-    })
   }
 
   register(username, password) {
@@ -45,7 +37,7 @@ class User {
         let result = JSON.parse(queryResult)
         if (result.length > 0 && bcrypt.compareSync(password, result[0]['PASSWORD'])) {
           this.username = result[0]['USERNAME']
-          this.id = result[0]['ID']
+          this.token = result[0]['ID']
           resolve(true)
         } else {
           resolve(false)
@@ -59,22 +51,16 @@ class User {
   }
 
   regexPassword (pass) {
-    let numbers = pass.match(/\d+/g)
-    let uppers = pass.match(/[A-Z]/)
     let lowers = pass.match(/[a-z]/)
     let lengths = pass.length >= 6
     let valid
 
     if (
-      numbers === null ||
-      uppers === null ||
       lowers === null ||
       lengths === false
     ) valid = false
 
     if (
-      numbers !== null &&
-      uppers !== null &&
       lowers !== null &&
       lengths
     ) valid = true
@@ -82,14 +68,14 @@ class User {
     return valid
   }
 
-  validateUsername (USERNAME) {
+  validateUsername (username) {
     return new Promise((resolve, reject) => {
-      if (this.regexUsername(USERNAME)) {
+      if (this.regexUsername(username)) {
         db.executeQuery('SELECT "USERNAME" FROM public."USERS";')
           .then((result) => {
             let userArray = JSON.parse(result)
             let found = userArray.some((el) => {
-              return el.USERNAME === USERNAME
+              return el.USERNAME === username
             })
             resolve(!found)
           })
