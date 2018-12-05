@@ -3,7 +3,8 @@ const {Client} = require('pg');
 
 let executeQuery = (query, values) => {
   let client = new Client({
-    connectionString: process.env.DATABASE_URL || 'postgres://postgres:letmein@localhost:5432/coda-local'
+    connectionString: process.env.DATABASE_URL || 'postgres://postgres:letmein@localhost:5432/coda-local',
+    ssl: true
   });
 
   return new Promise((resolve, reject) => {
